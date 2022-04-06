@@ -1,8 +1,11 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { throws } from 'assert';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import assert from 'assert/strict';
+
 
 @Injectable()
 export class UsersService {
@@ -19,11 +22,12 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userRepository.find();
+    this.userRepository.find();
   }
 
   async findOne(id: number): Promise<User> {
-    return this.userRepository.findOneBy({id:id});
+   return this.userRepository.findOneBy({id:id});
+    
   }
 
   //fica no ar

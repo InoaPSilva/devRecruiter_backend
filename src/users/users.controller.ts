@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { identity } from 'rxjs';
 
 @Controller('users')
 export class UsersController {
@@ -14,7 +15,10 @@ export class UsersController {
 
   @Get('/list')
   findAll() {
-    return this.usersService.findAll();
+    const list = this.usersService.findAll();
+    if(!list){
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    };
   }
 
   @Get('/list/:id')
