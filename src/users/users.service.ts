@@ -1,20 +1,18 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { throws } from 'assert';
+import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
+
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import assert from 'assert/strict';
-
 
 @Injectable()
 export class UsersService {
   constructor(
-    //vai inserir user numa tabela sql 
+    //vai inserir user numa tabela sql
     @Inject('USER_REPOSITORY')
-    private userRepository: Repository <User>
-  ){}
-  
+    private userRepository: Repository<User>,
+  ) {}
+
   //this.<respositoriousado>.<funcao>
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -26,8 +24,7 @@ export class UsersService {
   }
 
   async findOne(id: number): Promise<User> {
-   return this.userRepository.findOneBy({id:id});
-    
+    return this.userRepository.findOneBy({ id: id });
   }
 
   //fica no ar

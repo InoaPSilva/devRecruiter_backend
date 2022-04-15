@@ -3,17 +3,15 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 //transfomacao das tabelas em obj
 @Entity()
 export class User {
-    
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: String;
+  @Column()
+  name: string;
 
-    @Column()
-    email: String;
+  @Column()
+  email: string;
 
-    @Column()
-    password: String;
-
+  @Column()
+  password: string;
 }
