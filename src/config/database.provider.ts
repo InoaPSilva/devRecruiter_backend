@@ -9,8 +9,8 @@ export const databaseProviders = [
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
-      database: 'crud_nestjs1',
+      password: '123456',
+      database: 'dev_recruter',
       entities: [
             //volta uma pasta e procura entidades 
           __dirname + '/../**/*.entity{.ts,.js}',
