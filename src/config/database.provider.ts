@@ -8,8 +8,8 @@ export const databaseProviders = [
         type: 'mysql',
         host: 'localhost',
         port: 3306,
-        username: 'root',
-        password: '123456',
+        username: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD,
         database: 'dev_recruter',
         entities: [
           //volta uma pasta e procura entidades
