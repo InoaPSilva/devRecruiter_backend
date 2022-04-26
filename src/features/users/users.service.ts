@@ -27,12 +27,11 @@ export class UsersService {
     return this.userRepository.findOneBy({ id: id });
   }
 
-  //fica no ar
   async update(id: number, user: UpdateUserDto) {
     return this.userRepository.update(id, user);
   }
 
-  //remove para querry e delete para qualquer coisa
+  //remove para query e delete para qualquer coisa
   async remove(id: number): Promise<any> {
     return this.userRepository.delete(id);
   }
