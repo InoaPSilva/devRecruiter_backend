@@ -1,3 +1,4 @@
+import { LocalStrategy } from './shared/local.strategy';
 import { UsersModule } from '../users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
@@ -15,7 +16,7 @@ import { AuthController } from './auth.controller';
       signOptions: { expiresIn: '30s' },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

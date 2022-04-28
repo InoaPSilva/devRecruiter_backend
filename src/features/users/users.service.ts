@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Repository, FindOneOptions } from 'typeorm';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -23,8 +23,12 @@ export class UsersService {
     return this.userRepository.find();
   }
 
-  async findOne(id: number): Promise<User> {
-    return this.userRepository.findOneBy({ id: id });
+  async findById(id: number): Promise<User> {
+    return await this.userRepository.findOneByOrFail({ id });
+  }
+
+  async findByEmail(email:string): Promise<User> {
+    return await this.userRepository.findOne({where:{email: email}});
   }
 
   async update(id: number, user: UpdateUserDto) {
