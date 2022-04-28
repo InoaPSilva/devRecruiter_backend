@@ -32,8 +32,13 @@ export class UsersController {
   }
 
   @Get('/list/:id')
-  findOne(@Param('id') id: string) {
+  findById(@Param('id') id: string) {
     return this.usersService.findOne(+id);
+  }
+
+  @Get('/list/:email')
+  findByEmail(@Param('email') email: string) {
+    return this.usersService.findOne(+email);
   }
 
   @Put('/update/:id')
