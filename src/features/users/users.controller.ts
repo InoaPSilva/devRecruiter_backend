@@ -25,10 +25,10 @@ export class UsersController {
 
   @Get('/list')
   findAll() {
-    const list = this.usersService.findAll();
-    if (!list) {
-      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
-    }
+    return this.usersService.findAll();
+    // if (!list) {
+    //   throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    // }
   }
 
   @Get('/list/:id')
