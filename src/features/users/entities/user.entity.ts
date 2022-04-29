@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 import { hashSync } from 'bcrypt';
+import { IsEmail } from 'class-validator';
 //transfomacao das tabelas em obj
 @Entity()
 export class User {
@@ -10,6 +11,7 @@ export class User {
   name: string;
 
   @Column()
+  @IsEmail()
   email: string;
 
   @Column()
