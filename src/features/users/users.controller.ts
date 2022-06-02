@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
+import { ForbiddenError } from '@casl/ability';
+import { Body, Controller, Delete, ForbiddenException, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
 import { Response } from 'express';
 
 import { CreateUserDto } from './dto/create-user.dto';
@@ -9,7 +10,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
-  ) { }
+    ) { }
 
   @Post('/register')
   async create(@Body() createUserDto: CreateUserDto, @Res() res: Response): Promise<Response> {
@@ -18,6 +19,10 @@ export class UsersController {
       return <Response>res.status(HttpStatus.CREATED).json({ message: user });
     }
     catch (err) {
+      if(err instanceof ForbiddenError){
+        throw new ForbiddenException(err.message)
+      }
+
       return <Response>res.status(HttpStatus.BAD_REQUEST).json({ error: err.sqlMessage })
     }
   }

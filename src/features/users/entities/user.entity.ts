@@ -8,6 +8,9 @@ export class User {
   id: number;
 
   @Column()
+  isAdmin: boolean;
+
+  @Column()
   name: string;
 
   @Column()
