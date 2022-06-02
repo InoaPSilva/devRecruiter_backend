@@ -1,4 +1,4 @@
-import { User } from '../entities/user.entity';
+import { User } from '../users/entities/user.entity';
 import { Injectable } from "@nestjs/common";
 import { InferSubjects } from 'nest-casl';
 import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType } from '@casl/ability';
