@@ -20,6 +20,15 @@ export class User {
   @Column()
   password: string;
 
+  @Column()
+  district: string;
+
+  @Column()
+  state: string;
+
+  @Column()
+  city: string;
+
   @BeforeInsert()
   hashPassword() {
     this.password = hashSync(this.password, 10);
