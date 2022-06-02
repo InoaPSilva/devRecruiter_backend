@@ -1,4 +1,4 @@
-import { UserRolesModule } from '../user-roles/user-roles.module';
+import { UserRolesModule } from './user-roles/user-roles.module';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'src/config/database.module';
 

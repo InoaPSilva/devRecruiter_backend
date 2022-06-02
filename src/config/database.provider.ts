@@ -5,9 +5,9 @@ export const databaseProviders = [
     provide: 'DATABASE_CONNECTION',
     useFactory: async () =>
       await createConnection({
-        type: 'mysql',
+        type: 'postgres',
         host: 'localhost',
-        port: 3306,
+        port: 5432,
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
         database: 'dev_recruter',
