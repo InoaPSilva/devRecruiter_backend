@@ -12,7 +12,7 @@ export class VacanciesService {
     return `This action returns all vacancies`;
   }
 
-  findOne(id: number) {
+  findById(id: number) {
     return `This action returns a #${id} vacancy`;
   }
 
