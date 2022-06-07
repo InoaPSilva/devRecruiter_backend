@@ -1,7 +1,7 @@
 export class CreateVacancyDto {
     id:number;
     vancancyQuantity:number;
-    desiredSkills:string[];
+    desiredSkills:string;
     wage:number;
     escolaridade:string;
 }

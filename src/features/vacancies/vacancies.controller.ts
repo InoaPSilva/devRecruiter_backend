@@ -4,7 +4,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   HttpStatus,
@@ -26,11 +25,11 @@ export class VacanciesController {
   async create(
     @Body() createVacancyDto: CreateVacancyDto,
     @Res() res: Response,
-  ) {
+  ): Promise<Response> {
     try {
-      const user = await this.vacanciesService.create(createVacancyDto);
+      const vacancy = await this.vacanciesService.create(createVacancyDto);
 
-      return <Response>res.status(HttpStatus.CREATED).json({ message: user });
+      return <Response>res.status(HttpStatus.CREATED).json({ message: vacancy });
     } catch (err) {
       if (err instanceof ForbiddenError) {
         throw new ForbiddenException(err.message);

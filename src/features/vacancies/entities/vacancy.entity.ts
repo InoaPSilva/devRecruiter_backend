@@ -1,14 +1,15 @@
-import { Column, PrimaryColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity } from "typeorm";
 
+@Entity()
 export class Vacancy {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id:number;
     
     @Column()
     vancancyQuantity:number;
 
     @Column()
-    desiredSkills:string[];
+    desiredSkills:string;
 
     @Column()
     wage:number;

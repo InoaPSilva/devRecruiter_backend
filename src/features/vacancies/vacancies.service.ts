@@ -1,26 +1,37 @@
-import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateVacancyDto } from './dto/create-vacancy.dto';
 import { UpdateVacancyDto } from './dto/update-vacancy.dto';
+import { Vacancy } from './entities/vacancy.entity';
 
 @Injectable()
 export class VacanciesService {
-  create(createVacancyDto: CreateVacancyDto) {
-    return 'This action adds a new vacancy';
+  constructor(
+    @Inject('VACANCY_REPOSITORY')
+    private vacancyRepository: Repository<Vacancy>,
+  ) {}
+
+  async create(createVacancyDto: CreateVacancyDto) {
+    const vacancy = await this.vacancyRepository.save(createVacancyDto);
+    return <Vacancy>vacancy;
   }
 
-  findAll() {
-    return `This action returns all vacancies`;
+  async findAll() {
+    const vacancyList = await this.vacancyRepository.find();
+    return vacancyList;
   }
 
-  findById(id: number) {
-    return `This action returns a #${id} vacancy`;
+  async findById(id: number) {
+    const vacancy = await this.vacancyRepository.findOneByOrFail({ id });
+    return vacancy;
   }
 
-  update(id: number, updateVacancyDto: UpdateVacancyDto) {
-    return `This action updates a #${id} vacancy`;
+  async update(id: number, vacancy: UpdateVacancyDto) {
+    const vacancyUpdtate = await this.vacancyRepository.update(id, vacancy);
+    return <UpdateVacancyDto>vacancyUpdtate;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vacancy`;
+  async remove(id: number) {
+    return await this.vacancyRepository.delete(id);
   }
 }
