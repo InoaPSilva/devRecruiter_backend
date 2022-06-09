@@ -18,6 +18,7 @@ export class UsersController {
       return <Response>res.status(HttpStatus.CREATED).json({ message: user });
     }
     catch (err) {
+      console.log(err);
       return <Response>res.status(HttpStatus.BAD_REQUEST).json({ error: err.sqlMessage })
     }
   }

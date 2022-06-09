@@ -10,12 +10,14 @@ export class AuthService {
   ) {}
 
   async login(user) {
+    console.log('userlogin', user)
     const payload = {
       sub: user.id,
       email: user.email,
     };
 
     return {
+      role: user.isAdmin,
       token: this.jwtService.sign(payload),
     };
   }
@@ -24,6 +26,7 @@ export class AuthService {
     const user = await this.userService.findByEmail(email);
     if (user && user.password === password) {
       const { password, ...result } = user;
+      console.log(result)
       return result;
     }
     return null;
