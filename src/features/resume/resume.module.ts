@@ -7,7 +7,7 @@ import { resumeProviders } from './entities/resume.provider';
 @Module({ 
   imports: [DatabaseModule],
   controllers: [ResumeController],
-  providers: [...resumeProviders ,ResumeService],
-  export: [ResumeService]
+  providers: [ ResumeService, ...resumeProviders],
+  exports: [ResumeService]
 })
 export class ResumeModule {}

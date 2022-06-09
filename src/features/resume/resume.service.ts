@@ -9,30 +9,30 @@ export class ResumeService {
 
   constructor(
     @Inject('RESUME_REPOSITORY')
-    private reumseRepository: Repository<Resume>
+    private resumeRepository: Repository<Resume>
   ) {}
 
   async create(createResumeDto: CreateResumeDto): Promise<Resume> {
-    const resume = await this.reumseRepository.save(createResumeDto);
+    const resume = await this.resumeRepository.save(createResumeDto);
     return<Resume> resume;
   }
 
-  //async findById(id: number): Promise<Resume> {
-  //  const resumeUpdate = await this.reumseRepository.findOneByOrFail({ id });
-  //  return resumeUpdate;
-  //}
+  async findById(id: number): Promise<Resume> {
+    const user = await this.resumeRepository.findOneByOrFail({ id });
+    return user;
+  }
 
   async findAll(): Promise<Resume[]> {
-    const resumeList = await this.reumseRepository.find();
+    const resumeList = await this.resumeRepository.find();
     return resumeList; 
   }
 
   async update(id: number, resume: UpdateResumeDto): Promise<UpdateResumeDto> {
-    const resumeUpdate = await this.reumseRepository.update(id, resume);
+    const resumeUpdate = await this.resumeRepository.update(id, resume);
     return <UpdateResumeDto> resumeUpdate; 
   }
 
   async remove(id: number): Promise<any> {
-    return await this.reumseRepository.delete(id);
+    return await this.resumeRepository.delete(id);
   }
 }

@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Resume {
 
     @PrimaryGeneratedColumn()
-    userId: number;
+    id: number;
 
     @Column()
     name: string;
