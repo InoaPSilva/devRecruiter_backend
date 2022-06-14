@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
-import { hashSync } from 'bcrypt';
-import { IsEmail } from 'class-validator';
+import { Resume } from './../../resume/entities/resume.entity';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToOne, JoinColumn } from "typeorm";
+import { hashSync } from "bcrypt";
+import { IsEmail } from "class-validator";
 //transfomacao das tabelas em obj
 @Entity()
 export class User {
@@ -28,6 +29,10 @@ export class User {
 
   @Column()
   city: string;
+
+  @OneToOne(() => Resume, Resume => Resume.id, {onDelete: 'CASCADE'})
+  @JoinColumn()
+  resume: Resume;
 
   @BeforeInsert()
   hashPassword() {

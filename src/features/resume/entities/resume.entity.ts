@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from './../../users/entities/user.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Resume {
@@ -20,5 +21,4 @@ export class Resume {
 
     @Column() 
     contact: string;
-
 }
