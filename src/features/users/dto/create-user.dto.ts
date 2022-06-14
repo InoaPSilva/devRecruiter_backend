@@ -6,7 +6,4 @@ export class CreateUserDto {
   name: string;
   email: string;
   password: string;
-  district: string;
-  state: string;
-  city: string;
 }
