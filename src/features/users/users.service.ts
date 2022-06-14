@@ -31,13 +31,23 @@ export class UsersService {
 
   // Procurando usuario pelo id
   async findById(id: number): Promise<User> {
-    let user = await this.userRepository.findOneByOrFail({id});
+    const user = await this.userRepository.findOne({
+      where: { id },
+      relations: {
+        resume: true,
+      },
+    });
     return user;
   }
 
   // Procurando um usuario pelo email
   async findByEmail(email: string): Promise<User> {
-    const user = await this.userRepository.findOneBy({ email });
+    const user = await this.userRepository.findOne({
+      where: { email },
+      relations: {
+        resume: true,
+      },
+    });
     return user;
   }
 
