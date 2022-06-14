@@ -10,7 +10,7 @@ export const databaseProviders = [
         port: 5432,
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
-        database: 'dev_recruiter',
+        database: 'd5a6qihfcrm4qu',
         entities: [
           //volta uma pasta e procura entidades
           __dirname + '/../**/*.entity{.ts,.js}',
