@@ -8,6 +8,7 @@ export const databaseProviders = [
         type: 'postgres',
         host: 'ec2-52-22-136-117.compute-1.amazonaws.com',
         port: 5432,
+        url: process.env.DATABASE_URL,
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
         database: 'd5a6qihfcrm4qu',
