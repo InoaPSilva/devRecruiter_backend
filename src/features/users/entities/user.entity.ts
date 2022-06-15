@@ -21,15 +21,6 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  district: string;
-
-  @Column()
-  state: string;
-
-  @Column()
-  city: string;
-
   @OneToOne(() => Resume, Resume => Resume.id, {onDelete: 'CASCADE'})
   @JoinColumn()
   resume: Resume;

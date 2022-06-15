@@ -6,12 +6,11 @@ export const databaseProviders = [
     useFactory: async () =>
       await createConnection({
         type: 'postgres',
-        host: 'ec2-52-22-136-117.compute-1.amazonaws.com',
         port: 5432,
-        url: process.env.DATABASE_URL,
+        host: process.env.DATABASE_HOST,
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
-        database: 'd5a6qihfcrm4qu',
+        database: process.env.DATABASE_NAME,
         entities: [
           //volta uma pasta e procura entidades
           __dirname + '/../**/*.entity{.ts,.js}',
